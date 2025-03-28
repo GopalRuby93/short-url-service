@@ -1,0 +1,7 @@
+<div class="url-shortener-container">
+  <h2>Your Shortened URL</h2>
+  <p><strong>Original URL:</strong> <%= @short_url_data.original_url %></p>
+  <p><strong>Shortened URL:</strong> <a href="<%= @short_url_data.short_url %>" target="_blank"><%= @short_url_data.short_url %></a></p>
+
+  <%= link_to "Create Another", new_short_url_generator_path, class: "btn btn-primary" %>
+</div>

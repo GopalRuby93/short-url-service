@@ -1,0 +1,9 @@
+<%= form_with(model: ShortUrl.new, url: short_url_generators_path, method: :post, html: { class: "url-form" }) do |f| %>
+    <div class="form-group">
+      <%= f.label :original_url %>
+      <%= f.text_field :original_url, class: "form-control" %>
+    </div>
+  
+    <%= f.submit "Shorten URL", class: "btn btn-primary" %>
+  <% end %>
+  
