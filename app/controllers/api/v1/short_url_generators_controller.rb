@@ -13,8 +13,8 @@ class Api::V1::ShortUrlGeneratorsController < ApplicationController
   end
 
   def short_url
-    # binding.pry
-    short_url = "#{request.base_url}#{params[:short_url]}"
+
+    short_url = "#{request.base_url}/#{params[:short_url]}"
     short_url_data = ShortUrl.find_by(short_url:short_url)
     if short_url_data
       redirect_to short_url_data.original_url, allow_other_host: true, status:302

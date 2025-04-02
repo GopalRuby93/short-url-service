@@ -2,7 +2,11 @@ class UsersController < ApplicationController
   skip_before_action :authenticate_user, only: [:new, :create, :login]
 
   def new
-    @user = User.new
+    if current_user
+      redirect_to new_short_url_generator_path
+    else    
+      @user = User.new
+    end
   end
 
   def create
@@ -18,7 +22,10 @@ class UsersController < ApplicationController
   end
 
   def login
-    if request.post?
+    if current_user
+        redirect_to new_short_url_generator_path
+
+    elsif request.post?
       user = User.find_by(email: params[:email])
 
       if user&.authenticate(params[:password])
